@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7185948140814473707}
   m_Layer: 0
   m_Name: Trigger_B
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 7200835748590084042}
   m_Layer: 0
   m_Name: Trigger_A
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: -625268560768555973}
   m_Layer: 0
   m_Name: DoorHorizontalPrefab
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

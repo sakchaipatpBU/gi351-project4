@@ -143,11 +143,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stonePrefab: {fileID: 6364050534362320089, guid: ee89ae0192e9c374489f2f2fdbc2fc85, type: 3}
+  shadowPrefab: {fileID: 6364050534362320089, guid: f5e619dfcd7a653409f267eb8782bee0, type: 3}
   startPos: {fileID: 2345994362062861039}
   stopPos:
   - {fileID: 4513834259781923446}
   - {fileID: 8497014545670194254}
   - {fileID: 5042603381700868949}
+  shadowGrowTime: 1
+  shadowFinalSize: 0.6
   isFell: 0
 --- !u!61 &517843794431933922
 BoxCollider2D:

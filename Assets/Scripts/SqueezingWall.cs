@@ -42,7 +42,7 @@ public class SqueezingWall : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            cameraController.StopCameraShakingCoroutine();
+            //cameraController.StopCameraShakingCoroutine();
         }
     }
     void FixedUpdate()

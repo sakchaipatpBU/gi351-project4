@@ -12,6 +12,7 @@ TagManager:
   - Laser
   - Button
   - Timer
+  - Door
   layers:
   - Default
   - TransparentFX

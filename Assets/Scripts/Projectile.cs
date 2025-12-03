@@ -15,7 +15,8 @@ using UnityEngine;
 
      void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("turret") || collision.CompareTag("Projectile") || collision.CompareTag("Laser") || collision.CompareTag("Button") || collision.CompareTag("Timer"))
+        if (collision.CompareTag("turret") || collision.CompareTag("Projectile") || collision.CompareTag("Laser") || collision.CompareTag("Button") || collision.CompareTag("Timer")
+            || collision.CompareTag("Door"))
         {
             return;
         }

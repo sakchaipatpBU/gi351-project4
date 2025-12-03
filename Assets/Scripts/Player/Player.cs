@@ -1,3 +1,5 @@
+﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,8 +8,12 @@ public class Player : MonoBehaviour
     public PlayerController controller;
 
     public bool isImmune = false;
-
     public int hp = 3;
+
+    private SpriteRenderer sprite;     // <-- add this
+    private Color originalColor;
+
+    Coroutine immuneAfterHit;
 
     #region singletonn
     private static Player instance;
@@ -23,7 +29,9 @@ public class Player : MonoBehaviour
             return;
         }
         instance = this;
-        //DontDestroyOnLoad(gameObject);
+
+        sprite = GetComponent<SpriteRenderer>();   // <-- cache sprite
+        originalColor = sprite.color;
     }
     #endregion
 
@@ -32,17 +40,35 @@ public class Player : MonoBehaviour
         gameManager = GameManager.GetInstance();
         controller = gameObject.GetComponent<PlayerController>();
     }
+
     public void AddHp(int p = 1)
     {
         if (hp <= 0) return;
         hp += p;
         gameManager.AddHpUI(p);
     }
+
     public void ReduceHp(int p = 1)
     {
         if (hp <= 0 || isImmune) return;
+
         hp -= p;
         gameManager.RemoveHpUI(p);
+
+        // Flash red
+        StartCoroutine(FlashRed());
+        if(immuneAfterHit != null)
+        {
+            StopCoroutine(immuneAfterHit);
+        }
+        immuneAfterHit = StartCoroutine(ImmuneAfterHit());
+    }
+
+    private System.Collections.IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;        // turn red
+        yield return new WaitForSeconds(0.1f);   // flash time
+        sprite.color = originalColor;    // return to normal
     }
 
     public void GameOver()
@@ -50,4 +76,14 @@ public class Player : MonoBehaviour
         controller.enabled = false;
     }
 
+    IEnumerator ImmuneAfterHit()
+    {
+        if (isImmune)
+        {
+            yield break;
+        }
+        isImmune = true;
+        yield return new WaitForSeconds(0.5f);
+        isImmune = false;
+    }
 }
